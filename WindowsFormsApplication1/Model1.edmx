@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjectBig_SqlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="QuestionAnswer">
+          <Key>
+            <PropertyRef Name="IDQA" />
+          </Key>
+          <Property Name="IDQA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QACode" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="IDSubject" Type="int" />
+          <Property Name="QASound" Type="varbinary(max)" />
+          <Property Name="QAPicture" Type="image" />
+          <Property Name="QAEngWord" Type="char" MaxLength="30" />
+          <Property Name="QAVietWord" Type="nchar" MaxLength="30" />
+          <Property Name="QAExample_Viet" Type="nvarchar" MaxLength="100" />
+          <Property Name="QAExample_Eng" Type="varchar" MaxLength="100" />
+          <Property Name="QAPronunciation" Type="nvarchar" MaxLength="30" />
+          <Property Name="TypeOfWord" Type="char" MaxLength="5" />
+        </EntityType>
+        <EntityContainer Name="ProjectBig_SqlModelStoreContainer">
+          <EntitySet Name="QuestionAnswer" EntityType="Self.QuestionAnswer" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectBig_SqlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="QuestionAnswer">
+          <Key>
+            <PropertyRef Name="IDQA" />
+          </Key>
+          <Property Name="IDQA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QACode" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IDSubject" Type="Int32" />
+          <Property Name="QASound" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="QAPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="QAEngWord" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="QAVietWord" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="QAExample_Viet" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QAExample_Eng" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="QAPronunciation" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TypeOfWord" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="ProjectBig_SqlEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="QuestionAnswers" EntityType="Self.QuestionAnswer" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectBig_SqlModelStoreContainer" CdmEntityContainer="ProjectBig_SqlEntities2">
+          <EntitySetMapping Name="QuestionAnswers">
+            <EntityTypeMapping TypeName="ProjectBig_SqlModel.QuestionAnswer">
+              <MappingFragment StoreEntitySet="QuestionAnswer">
+                <ScalarProperty Name="IDQA" ColumnName="IDQA" />
+                <ScalarProperty Name="QACode" ColumnName="QACode" />
+                <ScalarProperty Name="IDSubject" ColumnName="IDSubject" />
+                <ScalarProperty Name="QASound" ColumnName="QASound" />
+                <ScalarProperty Name="QAPicture" ColumnName="QAPicture" />
+                <ScalarProperty Name="QAEngWord" ColumnName="QAEngWord" />
+                <ScalarProperty Name="QAVietWord" ColumnName="QAVietWord" />
+                <ScalarProperty Name="QAExample_Viet" ColumnName="QAExample_Viet" />
+                <ScalarProperty Name="QAExample_Eng" ColumnName="QAExample_Eng" />
+                <ScalarProperty Name="QAPronunciation" ColumnName="QAPronunciation" />
+                <ScalarProperty Name="TypeOfWord" ColumnName="TypeOfWord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

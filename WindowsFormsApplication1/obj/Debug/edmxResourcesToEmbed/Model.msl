@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectBig_SqlModelStoreContainer" CdmEntityContainer="ProjectBig_SqlEntities1">
+    <EntitySetMapping Name="Level_">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.Level_">
+        <MappingFragment StoreEntitySet="Level_">
+          <ScalarProperty Name="IDLevel_" ColumnName="IDLevel_" />
+          <ScalarProperty Name="Level_1" ColumnName="Level_" />
+          <ScalarProperty Name="CheckPoint_" ColumnName="CheckPoint_" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionAnswers">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.QuestionAnswer">
+        <MappingFragment StoreEntitySet="QuestionAnswer">
+          <ScalarProperty Name="IDQA" ColumnName="IDQA" />
+          <ScalarProperty Name="QACode" ColumnName="QACode" />
+          <ScalarProperty Name="IDSubject" ColumnName="IDSubject" />
+          <ScalarProperty Name="QASound" ColumnName="QASound" />
+          <ScalarProperty Name="QAPicture" ColumnName="QAPicture" />
+          <ScalarProperty Name="QAEngWord" ColumnName="QAEngWord" />
+          <ScalarProperty Name="QAVietWord" ColumnName="QAVietWord" />
+          <ScalarProperty Name="QAExample_Viet" ColumnName="QAExample_Viet" />
+          <ScalarProperty Name="QAExample_Eng" ColumnName="QAExample_Eng" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subject_">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.Subject_">
+        <MappingFragment StoreEntitySet="Subject_">
+          <ScalarProperty Name="IDSubject" ColumnName="IDSubject" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="IDLevel_" ColumnName="IDLevel_" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfoes">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="UIName" ColumnName="UIName" />
+          <ScalarProperty Name="UIBirthday" ColumnName="UIBirthday" />
+          <ScalarProperty Name="UIAddress" ColumnName="UIAddress" />
+          <ScalarProperty Name="UISex" ColumnName="UISex" />
+          <ScalarProperty Name="UIPhone" ColumnName="UIPhone" />
+          <ScalarProperty Name="UIMail" ColumnName="UIMail" />
+          <ScalarProperty Name="UIAccount" ColumnName="UIAccount" />
+          <ScalarProperty Name="UIPasswd" ColumnName="UIPasswd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLearnings">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.UserLearning">
+        <MappingFragment StoreEntitySet="UserLearning">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="IDQA" ColumnName="IDQA" />
+          <ScalarProperty Name="ULearnRemembered" ColumnName="ULearnRemembered" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLevels">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.UserLevel">
+        <MappingFragment StoreEntitySet="UserLevel">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="IDLevel_" ColumnName="IDLevel_" />
+          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTests">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.UserTest">
+        <MappingFragment StoreEntitySet="UserTest">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="UTNumerical" ColumnName="UTNumerical" />
+          <ScalarProperty Name="IDSubject" ColumnName="IDSubject" />
+          <ScalarProperty Name="UTTypeTest" ColumnName="UTTypeTest" />
+          <ScalarProperty Name="UTMarks" ColumnName="UTMarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CapDoHienTaiAllViews">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.CapDoHienTaiAllView">
+        <MappingFragment StoreEntitySet="CapDoHienTaiAllView">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="Level_" ColumnName="Level_" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChuDeSoCaus">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.ChuDeSoCau">
+        <MappingFragment StoreEntitySet="ChuDeSoCau">
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="soluongcau" ColumnName="soluongcau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DungChoFunctionDuoiDays">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.DungChoFunctionDuoiDay">
+        <MappingFragment StoreEntitySet="DungChoFunctionDuoiDay">
+          <ScalarProperty Name="uiid" ColumnName="uiid" />
+          <ScalarProperty Name="NgayBatDauTuLevel" ColumnName="NgayBatDauTuLevel" />
+          <ScalarProperty Name="levelcu" ColumnName="levelcu" />
+          <ScalarProperty Name="levelmoi" ColumnName="levelmoi" />
+          <ScalarProperty Name="NgayDatLevel" ColumnName="NgayDatLevel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LanThi_LoaiThi">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.LanThi_LoaiThi">
+        <MappingFragment StoreEntitySet="LanThi_LoaiThi">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="IDSubject" ColumnName="IDSubject" />
+          <ScalarProperty Name="UTTypeTest" ColumnName="UTTypeTest" />
+          <ScalarProperty Name="solanthi" ColumnName="solanthi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MotTramTuKhoNhoNhats">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.MotTramTuKhoNhoNhat">
+        <MappingFragment StoreEntitySet="MotTramTuKhoNhoNhat">
+          <ScalarProperty Name="IDQA" ColumnName="IDQA" />
+          <ScalarProperty Name="QAcode" ColumnName="QAcode" />
+          <ScalarProperty Name="Word" ColumnName="Word" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NguoiDatDiemTuyetDois">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.NguoiDatDiemTuyetDoi">
+        <MappingFragment StoreEntitySet="NguoiDatDiemTuyetDoi">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="IDSubject" ColumnName="IDSubject" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NguoiDungKhongLenCaps">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.NguoiDungKhongLenCap">
+        <MappingFragment StoreEntitySet="NguoiDungKhongLenCap">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="UIName" ColumnName="UIName" />
+          <ScalarProperty Name="UIBirthday" ColumnName="UIBirthday" />
+          <ScalarProperty Name="UIAddress" ColumnName="UIAddress" />
+          <ScalarProperty Name="UISex" ColumnName="UISex" />
+          <ScalarProperty Name="UIPhone" ColumnName="UIPhone" />
+          <ScalarProperty Name="UIMail" ColumnName="UIMail" />
+          <ScalarProperty Name="UIAccount" ColumnName="UIAccount" />
+          <ScalarProperty Name="UIPasswd" ColumnName="UIPasswd" />
+          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhungChuDeDuocHocs">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.NhungChuDeDuocHoc">
+        <MappingFragment StoreEntitySet="NhungChuDeDuocHoc">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tang2LevelTroLenNhanh">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.Tang2LevelTroLenNhanh">
+        <MappingFragment StoreEntitySet="Tang2LevelTroLenNhanh">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="levelcu" ColumnName="levelcu" />
+          <ScalarProperty Name="levelmoi" ColumnName="levelmoi" />
+          <ScalarProperty Name="songay" ColumnName="songay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tang2LevelTroLenNhanh_chuanxac">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.Tang2LevelTroLenNhanh_chuanxac">
+        <MappingFragment StoreEntitySet="Tang2LevelTroLenNhanh_chuanxac">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="levelcu" ColumnName="levelcu" />
+          <ScalarProperty Name="levelmoi" ColumnName="levelmoi" />
+          <ScalarProperty Name="songay" ColumnName="songay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TangLevelNhanhs">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.TangLevelNhanh">
+        <MappingFragment StoreEntitySet="TangLevelNhanh">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TuNgayBatDauLevelDenHienTais">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.TuNgayBatDauLevelDenHienTai">
+        <MappingFragment StoreEntitySet="TuNgayBatDauLevelDenHienTai">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="IDLevel" ColumnName="IDLevel" />
+          <ScalarProperty Name="SoNgay" ColumnName="SoNgay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="ProjectBig_SqlModel.Store.BaMuoiTuKhoHocNhat" FunctionImportName="BaMuoiTuKhoHocNhat">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectBig_SqlModel.BaMuoiTuKhoHocNhat_Result">
+          <ScalarProperty Name="IDQA" ColumnName="IDQA" />
+          <ScalarProperty Name="QACode" ColumnName="QACode" />
+          <ScalarProperty Name="Word" ColumnName="Word" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="ProjectBig_SqlModel.Store.CacCauHoiThuocChuDe" FunctionImportName="CacCauHoiThuocChuDe">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectBig_SqlModel.CacCauHoiThuocChuDe_Result">
+          <ScalarProperty Name="IDQA" ColumnName="IDQA" />
+          <ScalarProperty Name="QACode" ColumnName="QACode" />
+          <ScalarProperty Name="IDSubject" ColumnName="IDSubject" />
+          <ScalarProperty Name="QASound" ColumnName="QASound" />
+          <ScalarProperty Name="QAPicture" ColumnName="QAPicture" />
+          <ScalarProperty Name="QAEngWord" ColumnName="QAEngWord" />
+          <ScalarProperty Name="QAVietWord" ColumnName="QAVietWord" />
+          <ScalarProperty Name="QAExamViet" ColumnName="QAExamViet" />
+          <ScalarProperty Name="QAExamEng" ColumnName="QAExamEng" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="ProjectBig_SqlModel.Store.CapDoHienTaiTatCa" FunctionImportName="CapDoHienTaiTatCa">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectBig_SqlModel.CapDoHienTaiTatCa_Result">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="Level_" ColumnName="Level_" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="ProjectBig_SqlModel.Store.func_Chude_user_duochoc" FunctionImportName="func_Chude_user_duochoc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectBig_SqlModel.func_Chude_user_duochoc_Result">
+          <ScalarProperty Name="subjectName" ColumnName="subjectName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="ProjectBig_SqlModel.Store.func_Usertest_Levelx" FunctionImportName="func_Usertest_Levelx">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectBig_SqlModel.func_Usertest_Levelx_Result">
+          <ScalarProperty Name="Lanthi" ColumnName="Lanthi" />
+          <ScalarProperty Name="Chude" ColumnName="Chude" />
+          <ScalarProperty Name="diemthi" ColumnName="diemthi" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="ProjectBig_SqlModel.Store.LanThiChuyenCapSoDiemCua" FunctionImportName="LanThiChuyenCapSoDiemCua">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectBig_SqlModel.LanThiChuyenCapSoDiemCua_Result">
+          <ScalarProperty Name="UTNumerical" ColumnName="UTNumerical" />
+          <ScalarProperty Name="UTMarks" ColumnName="UTMarks" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="ProjectBig_SqlModel.Store.LanThiSoDiemTheoChuDeCua" FunctionImportName="LanThiSoDiemTheoChuDeCua">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectBig_SqlModel.LanThiSoDiemTheoChuDeCua_Result">
+          <ScalarProperty Name="UTNumerical" ColumnName="UTNumerical" />
+          <ScalarProperty Name="UTMarks" ColumnName="UTMarks" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="ProjectBig_SqlModel.Store.SoNgayTangTungCap" FunctionImportName="SoNgayTangTungCap">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectBig_SqlModel.SoNgayTangTungCap_Result">
+          <ScalarProperty Name="Từ_Cấp" ColumnName="Từ Cấp" />
+          <ScalarProperty Name="Tới_cấp" ColumnName="Tới cấp" />
+          <ScalarProperty Name="SoNgay" ColumnName="SoNgay" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="ProjectBig_SqlModel.Store.Tang2LevelTroLenTrongVongYThangGanDay" FunctionImportName="Tang2LevelTroLenTrongVongYThangGanDay">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectBig_SqlModel.Tang2LevelTroLenTrongVongYThangGanDay_Result">
+          <ScalarProperty Name="UIID" ColumnName="UIID" />
+          <ScalarProperty Name="ngaybatdau" ColumnName="ngaybatdau" />
+          <ScalarProperty Name="levelcu" ColumnName="levelcu" />
+          <ScalarProperty Name="levelmoi" ColumnName="levelmoi" />
+          <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
+          <ScalarProperty Name="songay" ColumnName="songay" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="ProjectBig_SqlModel.Store.ThoiGianThangCap" FunctionImportName="ThoiGianThangCap">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectBig_SqlModel.ThoiGianThangCap_Result">
+          <ScalarProperty Name="Level_" ColumnName="Level_" />
+          <ScalarProperty Name="SoNgay" ColumnName="SoNgay" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ProjectBig_SqlModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ProjectBig_SqlModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ProjectBig_SqlModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ProjectBig_SqlModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectBig_SqlModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ProjectBig_SqlModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProjectBig_SqlModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ProjectBig_SqlModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ProjectBig_SqlModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

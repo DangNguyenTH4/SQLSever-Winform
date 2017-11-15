@@ -1,0 +1,649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectBig_SqlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Level_">
+    <Key>
+      <PropertyRef Name="IDLevel_" />
+    </Key>
+    <Property Name="IDLevel_" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Level_" Type="int" />
+    <Property Name="CheckPoint_" Type="int" />
+  </EntityType>
+  <EntityType Name="QuestionAnswer">
+    <Key>
+      <PropertyRef Name="IDQA" />
+    </Key>
+    <Property Name="IDQA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QACode" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="IDSubject" Type="int" />
+    <Property Name="QASound" Type="varbinary(max)" />
+    <Property Name="QAPicture" Type="image" />
+    <Property Name="QAEngWord" Type="char" MaxLength="30" />
+    <Property Name="QAVietWord" Type="nchar" MaxLength="30" />
+    <Property Name="QAExample_Viet" Type="nvarchar" MaxLength="100" />
+    <Property Name="QAExample_Eng" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Subject_">
+    <Key>
+      <PropertyRef Name="IDSubject" />
+    </Key>
+    <Property Name="IDSubject" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectName" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="IDLevel_" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UIID" />
+    </Key>
+    <Property Name="UIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UIName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UIBirthday" Type="date" />
+    <Property Name="UIAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="UISex" Type="bit" />
+    <Property Name="UIPhone" Type="char" MaxLength="15" />
+    <Property Name="UIMail" Type="char" MaxLength="30" />
+    <Property Name="UIAccount" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="UIPasswd" Type="char" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserLearning">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="IDQA" />
+    </Key>
+    <Property Name="UIID" Type="int" Nullable="false" />
+    <Property Name="IDQA" Type="int" Nullable="false" />
+    <Property Name="ULearnRemembered" Type="bit" />
+  </EntityType>
+  <EntityType Name="UserLevel">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="IDLevel_" />
+    </Key>
+    <Property Name="UIID" Type="int" Nullable="false" />
+    <Property Name="IDLevel_" Type="int" Nullable="false" />
+    <Property Name="DateStart" Type="date" />
+  </EntityType>
+  <EntityType Name="UserTest">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="UTNumerical" />
+      <PropertyRef Name="IDSubject" />
+      <PropertyRef Name="UTTypeTest" />
+    </Key>
+    <Property Name="UIID" Type="int" Nullable="false" />
+    <Property Name="UTNumerical" Type="int" Nullable="false" />
+    <Property Name="IDSubject" Type="int" Nullable="false" />
+    <Property Name="UTTypeTest" Type="int" Nullable="false" />
+    <Property Name="UTMarks" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectBig_Sql.dbo.CapDoHienTaiAllView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CapDoHienTaiAllView">
+    <Key>
+      <PropertyRef Name="UIID" />
+    </Key>
+    <Property Name="UIID" Type="int" Nullable="false" />
+    <Property Name="Level_" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectBig_Sql.dbo.ChuDeSoCau' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ChuDeSoCau">
+    <Key>
+      <PropertyRef Name="SubjectName" />
+    </Key>
+    <Property Name="SubjectName" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="soluongcau" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectBig_Sql.dbo.DungChoFunctionDuoiDay' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DungChoFunctionDuoiDay">
+    <Key>
+      <PropertyRef Name="uiid" />
+      <PropertyRef Name="levelcu" />
+      <PropertyRef Name="levelmoi" />
+    </Key>
+    <Property Name="uiid" Type="int" Nullable="false" />
+    <Property Name="NgayBatDauTuLevel" Type="date" />
+    <Property Name="levelcu" Type="int" Nullable="false" />
+    <Property Name="levelmoi" Type="int" Nullable="false" />
+    <Property Name="NgayDatLevel" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectBig_Sql.dbo.LanThi_LoaiThi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LanThi_LoaiThi">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="IDSubject" />
+      <PropertyRef Name="UTTypeTest" />
+    </Key>
+    <Property Name="UIID" Type="int" Nullable="false" />
+    <Property Name="IDSubject" Type="int" Nullable="false" />
+    <Property Name="UTTypeTest" Type="int" Nullable="false" />
+    <Property Name="solanthi" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectBig_Sql.dbo.MotTramTuKhoNhoNhat' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MotTramTuKhoNhoNhat">
+    <Key>
+      <PropertyRef Name="IDQA" />
+      <PropertyRef Name="QAcode" />
+    </Key>
+    <Property Name="IDQA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QAcode" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="Word" Type="char" MaxLength="30" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectBig_Sql.dbo.NguoiDatDiemTuyetDoi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="NguoiDatDiemTuyetDoi">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="IDSubject" />
+    </Key>
+    <Property Name="UIID" Type="int" Nullable="false" />
+    <Property Name="IDSubject" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectBig_Sql.dbo.NguoiDungKhongLenCap' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="NguoiDungKhongLenCap">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="UIName" />
+      <PropertyRef Name="UIAccount" />
+      <PropertyRef Name="UIPasswd" />
+    </Key>
+    <Property Name="UIID" Type="int" Nullable="false" />
+    <Property Name="UIName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UIBirthday" Type="date" />
+    <Property Name="UIAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="UISex" Type="bit" />
+    <Property Name="UIPhone" Type="char" MaxLength="15" />
+    <Property Name="UIMail" Type="char" MaxLength="30" />
+    <Property Name="UIAccount" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="UIPasswd" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="DateStart" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectBig_Sql.dbo.NhungChuDeDuocHoc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="NhungChuDeDuocHoc">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="SubjectName" />
+    </Key>
+    <Property Name="UIID" Type="int" Nullable="false" />
+    <Property Name="SubjectName" Type="char" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectBig_Sql.dbo.Tang2LevelTroLenNhanh' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Tang2LevelTroLenNhanh">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="levelcu" />
+      <PropertyRef Name="levelmoi" />
+    </Key>
+    <Property Name="UIID" Type="int" Nullable="false" />
+    <Property Name="levelcu" Type="int" Nullable="false" />
+    <Property Name="levelmoi" Type="int" Nullable="false" />
+    <Property Name="songay" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectBig_Sql.dbo.Tang2LevelTroLenNhanh_chuanxac' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Tang2LevelTroLenNhanh_chuanxac">
+    <Key>
+      <PropertyRef Name="UIID" />
+    </Key>
+    <Property Name="UIID" Type="int" Nullable="false" />
+    <Property Name="levelcu" Type="int" />
+    <Property Name="levelmoi" Type="int" />
+    <Property Name="songay" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectBig_Sql.dbo.TangLevelNhanh' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TangLevelNhanh">
+    <Key>
+      <PropertyRef Name="UIID" />
+    </Key>
+    <Property Name="UIID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ProjectBig_Sql.dbo.TuNgayBatDauLevelDenHienTai' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TuNgayBatDauLevelDenHienTai">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="IDLevel" />
+    </Key>
+    <Property Name="UIID" Type="int" Nullable="false" />
+    <Property Name="IDLevel" Type="int" Nullable="false" />
+    <Property Name="SoNgay" Type="int" />
+  </EntityType>
+  <Association Name="FK__QuestionA__QAExa__5E8A0973">
+    <End Role="Subject_" Type="Self.Subject_" Multiplicity="0..1" />
+    <End Role="QuestionAnswer" Type="Self.QuestionAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject_">
+        <PropertyRef Name="IDSubject" />
+      </Principal>
+      <Dependent Role="QuestionAnswer">
+        <PropertyRef Name="IDSubject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Subject___IDLeve__59C55456">
+    <End Role="Level_" Type="Self.Level_" Multiplicity="0..1" />
+    <End Role="Subject_" Type="Self.Subject_" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Level_">
+        <PropertyRef Name="IDLevel_" />
+      </Principal>
+      <Dependent Role="Subject_">
+        <PropertyRef Name="IDLevel_" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserLearni__IDQA__69FBBC1F">
+    <End Role="QuestionAnswer" Type="Self.QuestionAnswer" Multiplicity="1" />
+    <End Role="UserLearning" Type="Self.UserLearning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionAnswer">
+        <PropertyRef Name="IDQA" />
+      </Principal>
+      <Dependent Role="UserLearning">
+        <PropertyRef Name="IDQA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserLearni__UIID__690797E6">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserLearning" Type="Self.UserLearning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UIID" />
+      </Principal>
+      <Dependent Role="UserLearning">
+        <PropertyRef Name="UIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserLevel__IDLev__756D6ECB">
+    <End Role="Level_" Type="Self.Level_" Multiplicity="1" />
+    <End Role="UserLevel" Type="Self.UserLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Level_">
+        <PropertyRef Name="IDLevel_" />
+      </Principal>
+      <Dependent Role="UserLevel">
+        <PropertyRef Name="IDLevel_" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserLevel__UIID__74794A92">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserLevel" Type="Self.UserLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UIID" />
+      </Principal>
+      <Dependent Role="UserLevel">
+        <PropertyRef Name="UIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserTest__IDSubj__2610A626">
+    <End Role="Subject_" Type="Self.Subject_" Multiplicity="1" />
+    <End Role="UserTest" Type="Self.UserTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject_">
+        <PropertyRef Name="IDSubject" />
+      </Principal>
+      <Dependent Role="UserTest">
+        <PropertyRef Name="IDSubject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserTest__UIID__251C81ED">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserTest" Type="Self.UserTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UIID" />
+      </Principal>
+      <Dependent Role="UserTest">
+        <PropertyRef Name="UIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="BaMuoiTuKhoHocNhat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDSubject" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="IDQA" Type="int" />
+          <Property Name="QACode" Type="char" MaxLength="30" />
+          <Property Name="Word" Type="char" MaxLength="30" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="CacCauHoiThuocChuDe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="chude" Type="char" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="IDQA" Type="int" />
+          <Property Name="QACode" Type="char" MaxLength="30" />
+          <Property Name="IDSubject" Type="char" MaxLength="30" />
+          <Property Name="QASound" Type="varbinary(max)" />
+          <Property Name="QAPicture" Type="image" />
+          <Property Name="QAEngWord" Type="char" MaxLength="30" />
+          <Property Name="QAVietWord" Type="nvarchar" MaxLength="50" />
+          <Property Name="QAExamViet" Type="nvarchar" MaxLength="50" />
+          <Property Name="QAExamEng" Type="char" MaxLength="50" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="CapDoHienTai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CapDoHienTai3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CapDoHienTaiTatCa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="UIID" Type="int" />
+          <Property Name="Level_" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="func_Chude_user_duochoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="subjectName" Type="char" MaxLength="30" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="func_Usertest_Levelx" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+    <Parameter Name="lev" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Lanthi" Type="int" />
+          <Property Name="Chude" Type="char" MaxLength="30" />
+          <Property Name="diemthi" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="LanThiChuyenCapSoDiemCua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="UTNumerical" Type="int" />
+          <Property Name="UTMarks" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="LanThiSoDiemTheoChuDeCua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+    <Parameter Name="IDSubject" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="UTNumerical" Type="int" />
+          <Property Name="UTMarks" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="PhanTramTuDaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+    <Parameter Name="IDSubject" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PhanTramTuDaNho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="float">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+    <Parameter Name="IDSubject" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SoNgayTangTungCap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Từ Cấp" Type="int" />
+          <Property Name="Tới cấp" Type="int" />
+          <Property Name="SoNgay" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="SoNguoiDatDiemTuyetDoiCuaChuDe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="IDSub" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SoTuDaHoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+    <Parameter Name="IDSubject" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SoTuDaNho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+    <Parameter Name="IDSubject" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SoTuHienCo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="IDSubject" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="STT_LanThi_TiepTheo_ChuDe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+    <Parameter Name="x" Type="int" Mode="In" />
+  </Function>
+  <Function Name="STT_LanThi_TiepTheo_NextLev" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+    <Parameter Name="x" Type="int" Mode="In" />
+  </Function>
+  <Function Name="TakeIdentityCurrent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="TableName" Type="char" Mode="In" />
+  </Function>
+  <Function Name="Tang2LevelTroLenTrongVongYThangGanDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="thang" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="UIID" Type="int" />
+          <Property Name="ngaybatdau" Type="date" />
+          <Property Name="levelcu" Type="int" />
+          <Property Name="levelmoi" Type="int" />
+          <Property Name="ngaydat" Type="date" />
+          <Property Name="songay" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="ThoiGianThangCap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UIID" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Level_" Type="int" />
+          <Property Name="SoNgay" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="ProjectBig_SqlModelStoreContainer">
+    <EntitySet Name="Level_" EntityType="Self.Level_" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionAnswer" EntityType="Self.QuestionAnswer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subject_" EntityType="Self.Subject_" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLearning" EntityType="Self.UserLearning" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLevel" EntityType="Self.UserLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTest" EntityType="Self.UserTest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CapDoHienTaiAllView" EntityType="Self.CapDoHienTaiAllView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CapDoHienTaiAllView].[UIID] AS [UIID], 
+    [CapDoHienTaiAllView].[Level_] AS [Level_]
+    FROM [dbo].[CapDoHienTaiAllView] AS [CapDoHienTaiAllView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ChuDeSoCau" EntityType="Self.ChuDeSoCau" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ChuDeSoCau].[SubjectName] AS [SubjectName], 
+    [ChuDeSoCau].[soluongcau] AS [soluongcau]
+    FROM [dbo].[ChuDeSoCau] AS [ChuDeSoCau]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DungChoFunctionDuoiDay" EntityType="Self.DungChoFunctionDuoiDay" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DungChoFunctionDuoiDay].[uiid] AS [uiid], 
+    [DungChoFunctionDuoiDay].[NgayBatDauTuLevel] AS [NgayBatDauTuLevel], 
+    [DungChoFunctionDuoiDay].[levelcu] AS [levelcu], 
+    [DungChoFunctionDuoiDay].[levelmoi] AS [levelmoi], 
+    [DungChoFunctionDuoiDay].[NgayDatLevel] AS [NgayDatLevel]
+    FROM [dbo].[DungChoFunctionDuoiDay] AS [DungChoFunctionDuoiDay]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LanThi_LoaiThi" EntityType="Self.LanThi_LoaiThi" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LanThi_LoaiThi].[UIID] AS [UIID], 
+    [LanThi_LoaiThi].[IDSubject] AS [IDSubject], 
+    [LanThi_LoaiThi].[UTTypeTest] AS [UTTypeTest], 
+    [LanThi_LoaiThi].[solanthi] AS [solanthi]
+    FROM [dbo].[LanThi_LoaiThi] AS [LanThi_LoaiThi]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MotTramTuKhoNhoNhat" EntityType="Self.MotTramTuKhoNhoNhat" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MotTramTuKhoNhoNhat].[IDQA] AS [IDQA], 
+    [MotTramTuKhoNhoNhat].[QAcode] AS [QAcode], 
+    [MotTramTuKhoNhoNhat].[Word] AS [Word]
+    FROM [dbo].[MotTramTuKhoNhoNhat] AS [MotTramTuKhoNhoNhat]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="NguoiDatDiemTuyetDoi" EntityType="Self.NguoiDatDiemTuyetDoi" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [NguoiDatDiemTuyetDoi].[UIID] AS [UIID], 
+    [NguoiDatDiemTuyetDoi].[IDSubject] AS [IDSubject]
+    FROM [dbo].[NguoiDatDiemTuyetDoi] AS [NguoiDatDiemTuyetDoi]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="NguoiDungKhongLenCap" EntityType="Self.NguoiDungKhongLenCap" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [NguoiDungKhongLenCap].[UIID] AS [UIID], 
+    [NguoiDungKhongLenCap].[UIName] AS [UIName], 
+    [NguoiDungKhongLenCap].[UIBirthday] AS [UIBirthday], 
+    [NguoiDungKhongLenCap].[UIAddress] AS [UIAddress], 
+    [NguoiDungKhongLenCap].[UISex] AS [UISex], 
+    [NguoiDungKhongLenCap].[UIPhone] AS [UIPhone], 
+    [NguoiDungKhongLenCap].[UIMail] AS [UIMail], 
+    [NguoiDungKhongLenCap].[UIAccount] AS [UIAccount], 
+    [NguoiDungKhongLenCap].[UIPasswd] AS [UIPasswd], 
+    [NguoiDungKhongLenCap].[DateStart] AS [DateStart]
+    FROM [dbo].[NguoiDungKhongLenCap] AS [NguoiDungKhongLenCap]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="NhungChuDeDuocHoc" EntityType="Self.NhungChuDeDuocHoc" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [NhungChuDeDuocHoc].[UIID] AS [UIID], 
+    [NhungChuDeDuocHoc].[SubjectName] AS [SubjectName]
+    FROM [dbo].[NhungChuDeDuocHoc] AS [NhungChuDeDuocHoc]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Tang2LevelTroLenNhanh" EntityType="Self.Tang2LevelTroLenNhanh" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Tang2LevelTroLenNhanh].[UIID] AS [UIID], 
+    [Tang2LevelTroLenNhanh].[levelcu] AS [levelcu], 
+    [Tang2LevelTroLenNhanh].[levelmoi] AS [levelmoi], 
+    [Tang2LevelTroLenNhanh].[songay] AS [songay]
+    FROM [dbo].[Tang2LevelTroLenNhanh] AS [Tang2LevelTroLenNhanh]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Tang2LevelTroLenNhanh_chuanxac" EntityType="Self.Tang2LevelTroLenNhanh_chuanxac" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Tang2LevelTroLenNhanh_chuanxac].[UIID] AS [UIID], 
+    [Tang2LevelTroLenNhanh_chuanxac].[levelcu] AS [levelcu], 
+    [Tang2LevelTroLenNhanh_chuanxac].[levelmoi] AS [levelmoi], 
+    [Tang2LevelTroLenNhanh_chuanxac].[songay] AS [songay]
+    FROM [dbo].[Tang2LevelTroLenNhanh_chuanxac] AS [Tang2LevelTroLenNhanh_chuanxac]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TangLevelNhanh" EntityType="Self.TangLevelNhanh" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TangLevelNhanh].[UIID] AS [UIID]
+    FROM [dbo].[TangLevelNhanh] AS [TangLevelNhanh]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TuNgayBatDauLevelDenHienTai" EntityType="Self.TuNgayBatDauLevelDenHienTai" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TuNgayBatDauLevelDenHienTai].[UIID] AS [UIID], 
+    [TuNgayBatDauLevelDenHienTai].[IDLevel] AS [IDLevel], 
+    [TuNgayBatDauLevelDenHienTai].[SoNgay] AS [SoNgay]
+    FROM [dbo].[TuNgayBatDauLevelDenHienTai] AS [TuNgayBatDauLevelDenHienTai]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__QuestionA__QAExa__5E8A0973" Association="Self.FK__QuestionA__QAExa__5E8A0973">
+      <End Role="Subject_" EntitySet="Subject_" />
+      <End Role="QuestionAnswer" EntitySet="QuestionAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Subject___IDLeve__59C55456" Association="Self.FK__Subject___IDLeve__59C55456">
+      <End Role="Level_" EntitySet="Level_" />
+      <End Role="Subject_" EntitySet="Subject_" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserLearni__IDQA__69FBBC1F" Association="Self.FK__UserLearni__IDQA__69FBBC1F">
+      <End Role="QuestionAnswer" EntitySet="QuestionAnswer" />
+      <End Role="UserLearning" EntitySet="UserLearning" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserLearni__UIID__690797E6" Association="Self.FK__UserLearni__UIID__690797E6">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserLearning" EntitySet="UserLearning" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserLevel__IDLev__756D6ECB" Association="Self.FK__UserLevel__IDLev__756D6ECB">
+      <End Role="Level_" EntitySet="Level_" />
+      <End Role="UserLevel" EntitySet="UserLevel" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserLevel__UIID__74794A92" Association="Self.FK__UserLevel__UIID__74794A92">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserLevel" EntitySet="UserLevel" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserTest__IDSubj__2610A626" Association="Self.FK__UserTest__IDSubj__2610A626">
+      <End Role="Subject_" EntitySet="Subject_" />
+      <End Role="UserTest" EntitySet="UserTest" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserTest__UIID__251C81ED" Association="Self.FK__UserTest__UIID__251C81ED">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserTest" EntitySet="UserTest" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

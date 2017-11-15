@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectBig_SqlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="BaMuoiTuKhoHocNhat_Result">
+    <Property Name="IDQA" Type="Int32" />
+    <Property Name="QACode" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="Word" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+  </ComplexType>
+  <ComplexType Name="CacCauHoiThuocChuDe_Result">
+    <Property Name="IDQA" Type="Int32" />
+    <Property Name="QACode" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="IDSubject" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="QASound" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="QAPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="QAEngWord" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="QAVietWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="QAExamViet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="QAExamEng" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+  </ComplexType>
+  <ComplexType Name="CapDoHienTaiTatCa_Result">
+    <Property Name="UIID" Type="Int32" />
+    <Property Name="Level_" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="func_Chude_user_duochoc_Result">
+    <Property Name="subjectName" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+  </ComplexType>
+  <ComplexType Name="func_Usertest_Levelx_Result">
+    <Property Name="Lanthi" Type="Int32" />
+    <Property Name="Chude" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="diemthi" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="LanThiChuyenCapSoDiemCua_Result">
+    <Property Name="UTNumerical" Type="Int32" />
+    <Property Name="UTMarks" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="LanThiSoDiemTheoChuDeCua_Result">
+    <Property Name="UTNumerical" Type="Int32" />
+    <Property Name="UTMarks" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="SoNgayTangTungCap_Result">
+    <Property Name="Từ_Cấp" Type="Int32" />
+    <Property Name="Tới_cấp" Type="Int32" />
+    <Property Name="SoNgay" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="Tang2LevelTroLenTrongVongYThangGanDay_Result">
+    <Property Name="UIID" Type="Int32" />
+    <Property Name="ngaybatdau" Type="DateTime" />
+    <Property Name="levelcu" Type="Int32" />
+    <Property Name="levelmoi" Type="Int32" />
+    <Property Name="ngaydat" Type="DateTime" />
+    <Property Name="songay" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="ThoiGianThangCap_Result">
+    <Property Name="Level_" Type="Int32" />
+    <Property Name="SoNgay" Type="Int32" />
+  </ComplexType>
+  <EntityType Name="Level_">
+    <Key>
+      <PropertyRef Name="IDLevel_" />
+    </Key>
+    <Property Name="IDLevel_" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Level_1" Type="Int32" />
+    <Property Name="CheckPoint_" Type="Int32" />
+    <NavigationProperty Name="Subject_" Relationship="Self.FK__Subject___IDLeve__59C55456" FromRole="Level_" ToRole="Subject_" />
+    <NavigationProperty Name="UserLevels" Relationship="Self.FK__UserLevel__IDLev__756D6ECB" FromRole="Level_" ToRole="UserLevel" />
+  </EntityType>
+  <EntityType Name="QuestionAnswer">
+    <Key>
+      <PropertyRef Name="IDQA" />
+    </Key>
+    <Property Name="IDQA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QACode" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IDSubject" Type="Int32" />
+    <Property Name="QASound" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="QAPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="QAEngWord" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="QAVietWord" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="QAExample_Viet" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="QAExample_Eng" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Subject_" Relationship="Self.FK__QuestionA__QAExa__5E8A0973" FromRole="QuestionAnswer" ToRole="Subject_" />
+    <NavigationProperty Name="UserLearnings" Relationship="Self.FK__UserLearni__IDQA__69FBBC1F" FromRole="QuestionAnswer" ToRole="UserLearning" />
+  </EntityType>
+  <EntityType Name="Subject_">
+    <Key>
+      <PropertyRef Name="IDSubject" />
+    </Key>
+    <Property Name="IDSubject" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IDLevel_" Type="Int32" />
+    <NavigationProperty Name="Level_" Relationship="Self.FK__Subject___IDLeve__59C55456" FromRole="Subject_" ToRole="Level_" />
+    <NavigationProperty Name="QuestionAnswers" Relationship="Self.FK__QuestionA__QAExa__5E8A0973" FromRole="Subject_" ToRole="QuestionAnswer" />
+    <NavigationProperty Name="UserTests" Relationship="Self.FK__UserTest__IDSubj__2610A626" FromRole="Subject_" ToRole="UserTest" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UIID" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UIName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UIBirthday" Type="DateTime" Precision="0" />
+    <Property Name="UIAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UISex" Type="Boolean" />
+    <Property Name="UIPhone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="UIMail" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="UIAccount" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="UIPasswd" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="UserLearnings" Relationship="Self.FK__UserLearni__UIID__690797E6" FromRole="UserInfo" ToRole="UserLearning" />
+    <NavigationProperty Name="UserLevels" Relationship="Self.FK__UserLevel__UIID__74794A92" FromRole="UserInfo" ToRole="UserLevel" />
+    <NavigationProperty Name="UserTests" Relationship="Self.FK__UserTest__UIID__251C81ED" FromRole="UserInfo" ToRole="UserTest" />
+  </EntityType>
+  <EntityType Name="UserLearning">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="IDQA" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" />
+    <Property Name="IDQA" Type="Int32" Nullable="false" />
+    <Property Name="ULearnRemembered" Type="Boolean" />
+    <NavigationProperty Name="QuestionAnswer" Relationship="Self.FK__UserLearni__IDQA__69FBBC1F" FromRole="UserLearning" ToRole="QuestionAnswer" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__UserLearni__UIID__690797E6" FromRole="UserLearning" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserLevel">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="IDLevel_" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" />
+    <Property Name="IDLevel_" Type="Int32" Nullable="false" />
+    <Property Name="DateStart" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Level_" Relationship="Self.FK__UserLevel__IDLev__756D6ECB" FromRole="UserLevel" ToRole="Level_" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__UserLevel__UIID__74794A92" FromRole="UserLevel" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserTest">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="UTNumerical" />
+      <PropertyRef Name="IDSubject" />
+      <PropertyRef Name="UTTypeTest" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" />
+    <Property Name="UTNumerical" Type="Int32" Nullable="false" />
+    <Property Name="IDSubject" Type="Int32" Nullable="false" />
+    <Property Name="UTTypeTest" Type="Int32" Nullable="false" />
+    <Property Name="UTMarks" Type="Int32" />
+    <NavigationProperty Name="Subject_" Relationship="Self.FK__UserTest__IDSubj__2610A626" FromRole="UserTest" ToRole="Subject_" />
+    <NavigationProperty Name="UserInfo" Relationship="Self.FK__UserTest__UIID__251C81ED" FromRole="UserTest" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="CapDoHienTaiAllView">
+    <Key>
+      <PropertyRef Name="UIID" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" />
+    <Property Name="Level_" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ChuDeSoCau">
+    <Key>
+      <PropertyRef Name="SubjectName" />
+    </Key>
+    <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="soluongcau" Type="Int32" />
+  </EntityType>
+  <EntityType Name="DungChoFunctionDuoiDay">
+    <Key>
+      <PropertyRef Name="uiid" />
+      <PropertyRef Name="levelcu" />
+      <PropertyRef Name="levelmoi" />
+    </Key>
+    <Property Name="uiid" Type="Int32" Nullable="false" />
+    <Property Name="NgayBatDauTuLevel" Type="DateTime" Precision="0" />
+    <Property Name="levelcu" Type="Int32" Nullable="false" />
+    <Property Name="levelmoi" Type="Int32" Nullable="false" />
+    <Property Name="NgayDatLevel" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="LanThi_LoaiThi">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="IDSubject" />
+      <PropertyRef Name="UTTypeTest" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" />
+    <Property Name="IDSubject" Type="Int32" Nullable="false" />
+    <Property Name="UTTypeTest" Type="Int32" Nullable="false" />
+    <Property Name="solanthi" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MotTramTuKhoNhoNhat">
+    <Key>
+      <PropertyRef Name="IDQA" />
+      <PropertyRef Name="QAcode" />
+    </Key>
+    <Property Name="IDQA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QAcode" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Word" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="NguoiDatDiemTuyetDoi">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="IDSubject" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" />
+    <Property Name="IDSubject" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NguoiDungKhongLenCap">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="UIName" />
+      <PropertyRef Name="UIAccount" />
+      <PropertyRef Name="UIPasswd" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" />
+    <Property Name="UIName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UIBirthday" Type="DateTime" Precision="0" />
+    <Property Name="UIAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UISex" Type="Boolean" />
+    <Property Name="UIPhone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="UIMail" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="UIAccount" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="UIPasswd" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DateStart" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="NhungChuDeDuocHoc">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="SubjectName" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" />
+    <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tang2LevelTroLenNhanh">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="levelcu" />
+      <PropertyRef Name="levelmoi" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" />
+    <Property Name="levelcu" Type="Int32" Nullable="false" />
+    <Property Name="levelmoi" Type="Int32" Nullable="false" />
+    <Property Name="songay" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tang2LevelTroLenNhanh_chuanxac">
+    <Key>
+      <PropertyRef Name="UIID" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" />
+    <Property Name="levelcu" Type="Int32" />
+    <Property Name="levelmoi" Type="Int32" />
+    <Property Name="songay" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TangLevelNhanh">
+    <Key>
+      <PropertyRef Name="UIID" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TuNgayBatDauLevelDenHienTai">
+    <Key>
+      <PropertyRef Name="UIID" />
+      <PropertyRef Name="IDLevel" />
+    </Key>
+    <Property Name="UIID" Type="Int32" Nullable="false" />
+    <Property Name="IDLevel" Type="Int32" Nullable="false" />
+    <Property Name="SoNgay" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__Subject___IDLeve__59C55456">
+    <End Role="Level_" Type="Self.Level_" Multiplicity="0..1" />
+    <End Role="Subject_" Type="Self.Subject_" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Level_">
+        <PropertyRef Name="IDLevel_" />
+      </Principal>
+      <Dependent Role="Subject_">
+        <PropertyRef Name="IDLevel_" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserLevel__IDLev__756D6ECB">
+    <End Role="Level_" Type="Self.Level_" Multiplicity="1" />
+    <End Role="UserLevel" Type="Self.UserLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Level_">
+        <PropertyRef Name="IDLevel_" />
+      </Principal>
+      <Dependent Role="UserLevel">
+        <PropertyRef Name="IDLevel_" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QuestionA__QAExa__5E8A0973">
+    <End Role="Subject_" Type="Self.Subject_" Multiplicity="0..1" />
+    <End Role="QuestionAnswer" Type="Self.QuestionAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject_">
+        <PropertyRef Name="IDSubject" />
+      </Principal>
+      <Dependent Role="QuestionAnswer">
+        <PropertyRef Name="IDSubject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserLearni__IDQA__69FBBC1F">
+    <End Role="QuestionAnswer" Type="Self.QuestionAnswer" Multiplicity="1" />
+    <End Role="UserLearning" Type="Self.UserLearning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionAnswer">
+        <PropertyRef Name="IDQA" />
+      </Principal>
+      <Dependent Role="UserLearning">
+        <PropertyRef Name="IDQA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserTest__IDSubj__2610A626">
+    <End Role="Subject_" Type="Self.Subject_" Multiplicity="1" />
+    <End Role="UserTest" Type="Self.UserTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject_">
+        <PropertyRef Name="IDSubject" />
+      </Principal>
+      <Dependent Role="UserTest">
+        <PropertyRef Name="IDSubject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserLearni__UIID__690797E6">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserLearning" Type="Self.UserLearning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UIID" />
+      </Principal>
+      <Dependent Role="UserLearning">
+        <PropertyRef Name="UIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserLevel__UIID__74794A92">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserLevel" Type="Self.UserLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UIID" />
+      </Principal>
+      <Dependent Role="UserLevel">
+        <PropertyRef Name="UIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserTest__UIID__251C81ED">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+    <End Role="UserTest" Type="Self.UserTest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UIID" />
+      </Principal>
+      <Dependent Role="UserTest">
+        <PropertyRef Name="UIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectBig_SqlEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Level_" EntityType="Self.Level_" />
+    <EntitySet Name="QuestionAnswers" EntityType="Self.QuestionAnswer" />
+    <EntitySet Name="Subject_" EntityType="Self.Subject_" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
+    <EntitySet Name="UserLearnings" EntityType="Self.UserLearning" />
+    <EntitySet Name="UserLevels" EntityType="Self.UserLevel" />
+    <EntitySet Name="UserTests" EntityType="Self.UserTest" />
+    <EntitySet Name="CapDoHienTaiAllViews" EntityType="Self.CapDoHienTaiAllView" />
+    <EntitySet Name="ChuDeSoCaus" EntityType="Self.ChuDeSoCau" />
+    <EntitySet Name="DungChoFunctionDuoiDays" EntityType="Self.DungChoFunctionDuoiDay" />
+    <EntitySet Name="LanThi_LoaiThi" EntityType="Self.LanThi_LoaiThi" />
+    <EntitySet Name="MotTramTuKhoNhoNhats" EntityType="Self.MotTramTuKhoNhoNhat" />
+    <EntitySet Name="NguoiDatDiemTuyetDois" EntityType="Self.NguoiDatDiemTuyetDoi" />
+    <EntitySet Name="NguoiDungKhongLenCaps" EntityType="Self.NguoiDungKhongLenCap" />
+    <EntitySet Name="NhungChuDeDuocHocs" EntityType="Self.NhungChuDeDuocHoc" />
+    <EntitySet Name="Tang2LevelTroLenNhanh" EntityType="Self.Tang2LevelTroLenNhanh" />
+    <EntitySet Name="Tang2LevelTroLenNhanh_chuanxac" EntityType="Self.Tang2LevelTroLenNhanh_chuanxac" />
+    <EntitySet Name="TangLevelNhanhs" EntityType="Self.TangLevelNhanh" />
+    <EntitySet Name="TuNgayBatDauLevelDenHienTais" EntityType="Self.TuNgayBatDauLevelDenHienTai" />
+    <AssociationSet Name="FK__Subject___IDLeve__59C55456" Association="Self.FK__Subject___IDLeve__59C55456">
+      <End Role="Level_" EntitySet="Level_" />
+      <End Role="Subject_" EntitySet="Subject_" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserLevel__IDLev__756D6ECB" Association="Self.FK__UserLevel__IDLev__756D6ECB">
+      <End Role="Level_" EntitySet="Level_" />
+      <End Role="UserLevel" EntitySet="UserLevels" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QuestionA__QAExa__5E8A0973" Association="Self.FK__QuestionA__QAExa__5E8A0973">
+      <End Role="Subject_" EntitySet="Subject_" />
+      <End Role="QuestionAnswer" EntitySet="QuestionAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserLearni__IDQA__69FBBC1F" Association="Self.FK__UserLearni__IDQA__69FBBC1F">
+      <End Role="QuestionAnswer" EntitySet="QuestionAnswers" />
+      <End Role="UserLearning" EntitySet="UserLearnings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserTest__IDSubj__2610A626" Association="Self.FK__UserTest__IDSubj__2610A626">
+      <End Role="Subject_" EntitySet="Subject_" />
+      <End Role="UserTest" EntitySet="UserTests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserLearni__UIID__690797E6" Association="Self.FK__UserLearni__UIID__690797E6">
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+      <End Role="UserLearning" EntitySet="UserLearnings" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserLevel__UIID__74794A92" Association="Self.FK__UserLevel__UIID__74794A92">
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+      <End Role="UserLevel" EntitySet="UserLevels" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserTest__UIID__251C81ED" Association="Self.FK__UserTest__UIID__251C81ED">
+      <End Role="UserInfo" EntitySet="UserInfoes" />
+      <End Role="UserTest" EntitySet="UserTests" />
+    </AssociationSet>
+    <FunctionImport Name="BaMuoiTuKhoHocNhat" IsComposable="true" ReturnType="Collection(ProjectBig_SqlModel.BaMuoiTuKhoHocNhat_Result)">
+      <Parameter Name="IDSubject" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="CacCauHoiThuocChuDe" IsComposable="true" ReturnType="Collection(ProjectBig_SqlModel.CacCauHoiThuocChuDe_Result)">
+      <Parameter Name="chude" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CapDoHienTaiTatCa" IsComposable="true" ReturnType="Collection(ProjectBig_SqlModel.CapDoHienTaiTatCa_Result)" />
+    <FunctionImport Name="func_Chude_user_duochoc" IsComposable="true" ReturnType="Collection(ProjectBig_SqlModel.func_Chude_user_duochoc_Result)">
+      <Parameter Name="UIID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="func_Usertest_Levelx" IsComposable="true" ReturnType="Collection(ProjectBig_SqlModel.func_Usertest_Levelx_Result)">
+      <Parameter Name="UIID" Mode="In" Type="Int32" />
+      <Parameter Name="lev" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LanThiChuyenCapSoDiemCua" IsComposable="true" ReturnType="Collection(ProjectBig_SqlModel.LanThiChuyenCapSoDiemCua_Result)">
+      <Parameter Name="UIID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="LanThiSoDiemTheoChuDeCua" IsComposable="true" ReturnType="Collection(ProjectBig_SqlModel.LanThiSoDiemTheoChuDeCua_Result)">
+      <Parameter Name="UIID" Mode="In" Type="Int32" />
+      <Parameter Name="IDSubject" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SoNgayTangTungCap" IsComposable="true" ReturnType="Collection(ProjectBig_SqlModel.SoNgayTangTungCap_Result)">
+      <Parameter Name="UIID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Tang2LevelTroLenTrongVongYThangGanDay" IsComposable="true" ReturnType="Collection(ProjectBig_SqlModel.Tang2LevelTroLenTrongVongYThangGanDay_Result)">
+      <Parameter Name="thang" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ThoiGianThangCap" IsComposable="true" ReturnType="Collection(ProjectBig_SqlModel.ThoiGianThangCap_Result)">
+      <Parameter Name="UIID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ProjectBig_SqlModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ProjectBig_SqlModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectBig_SqlModelStoreContainer" CdmEntityContainer="ProjectBig_SqlEntities2">
+    <EntitySetMapping Name="QuestionAnswers">
+      <EntityTypeMapping TypeName="ProjectBig_SqlModel.QuestionAnswer">
+        <MappingFragment StoreEntitySet="QuestionAnswer">
+          <ScalarProperty Name="IDQA" ColumnName="IDQA" />
+          <ScalarProperty Name="QACode" ColumnName="QACode" />
+          <ScalarProperty Name="IDSubject" ColumnName="IDSubject" />
+          <ScalarProperty Name="QASound" ColumnName="QASound" />
+          <ScalarProperty Name="QAPicture" ColumnName="QAPicture" />
+          <ScalarProperty Name="QAEngWord" ColumnName="QAEngWord" />
+          <ScalarProperty Name="QAVietWord" ColumnName="QAVietWord" />
+          <ScalarProperty Name="QAExample_Viet" ColumnName="QAExample_Viet" />
+          <ScalarProperty Name="QAExample_Eng" ColumnName="QAExample_Eng" />
+          <ScalarProperty Name="QAPronunciation" ColumnName="QAPronunciation" />
+          <ScalarProperty Name="TypeOfWord" ColumnName="TypeOfWord" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

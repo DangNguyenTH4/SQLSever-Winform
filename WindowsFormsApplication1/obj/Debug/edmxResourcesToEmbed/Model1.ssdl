@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectBig_SqlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="QuestionAnswer">
+    <Key>
+      <PropertyRef Name="IDQA" />
+    </Key>
+    <Property Name="IDQA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QACode" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="IDSubject" Type="int" />
+    <Property Name="QASound" Type="varbinary(max)" />
+    <Property Name="QAPicture" Type="image" />
+    <Property Name="QAEngWord" Type="char" MaxLength="30" />
+    <Property Name="QAVietWord" Type="nchar" MaxLength="30" />
+    <Property Name="QAExample_Viet" Type="nvarchar" MaxLength="100" />
+    <Property Name="QAExample_Eng" Type="varchar" MaxLength="100" />
+    <Property Name="QAPronunciation" Type="nvarchar" MaxLength="30" />
+    <Property Name="TypeOfWord" Type="char" MaxLength="5" />
+  </EntityType>
+  <EntityContainer Name="ProjectBig_SqlModelStoreContainer">
+    <EntitySet Name="QuestionAnswer" EntityType="Self.QuestionAnswer" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
